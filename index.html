@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>CEZOO</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    background:#fff;
+}
+
+.screen{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:#fff;
+}
+
+
+/* =====================================
+   COMMON IMAGE
+===================================== */
+
+.side-image{
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    object-fit:contain;
+}
+
+
+/* =====================================
+   FIRST 1.PNG
+   CENTER -> ZOOM -> LEFT POSITION
+===================================== */
+
+.hero-image{
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    object-fit:contain;
+
+    left:50%;
+    top:50%;
+
+    z-index:10;
+
+    opacity:0;
+
+    animation:
+        firstImageMove 1.8s
+        cubic-bezier(.22,.8,.32,1)
+        forwards;
+}
+
+
+@keyframes firstImageMove{
+
+    /* appear center */
+
+    0%{
+        left:50%;
+        top:50%;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.3);
+
+        opacity:0;
+    }
+
+
+    /* zoom */
+
+    25%{
+        left:50%;
+        top:50%;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.8);
+
+        opacity:1;
+    }
+
+
+    /* stay little */
+
+    48%{
+        left:50%;
+        top:50%;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.8);
+
+        opacity:1;
+    }
+
+
+    /* go to left first position */
+
+    100%{
+        left:-48px;
+        top:2%;
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity:1;
+    }
+}
+
+
+/* =====================================
+   LEFT SIDE
+===================================== */
+
+.left-image{
+    left:-48px;
+
+    opacity:0;
+
+    transform:translateX(-120px);
+
+    animation:
+        leftCome .55s
+        cubic-bezier(.22,.8,.32,1)
+        forwards;
+}
+
+
+/* =====================================
+   RIGHT SIDE
+===================================== */
+
+.right-image{
+    right:-48px;
+
+    opacity:0;
+
+    transform:translateX(120px);
+
+    animation:
+        rightCome .55s
+        cubic-bezier(.22,.8,.32,1)
+        forwards;
+}
+
+
+/* =====================================
+   POSITIONS
+===================================== */
+
+.pos-1{ top:2%; }
+.pos-2{ top:14%; }
+.pos-3{ top:26%; }
+.pos-4{ top:38%; }
+
+.pos-5{ top:50%; }
+.pos-6{ top:62%; }
+.pos-7{ top:74%; }
+.pos-8{ top:86%; }
+
+
+/* =====================================
+   WAIT UNTIL FIRST IMAGE FINISHES
+===================================== */
+
+.delay-1{ animation-delay:1.85s; }
+.delay-2{ animation-delay:1.93s; }
+.delay-3{ animation-delay:2.01s; }
+.delay-4{ animation-delay:2.09s; }
+.delay-5{ animation-delay:2.17s; }
+.delay-6{ animation-delay:2.25s; }
+.delay-7{ animation-delay:2.33s; }
+.delay-8{ animation-delay:2.41s; }
+
+
+/* =====================================
+   SIDE ANIMATIONS
+===================================== */
+
+@keyframes leftCome{
+
+    from{
+        opacity:0;
+        transform:translateX(-120px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+
+@keyframes rightCome{
+
+    from{
+        opacity:0;
+        transform:translateX(120px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:480px){
+
+    .side-image,
+    .hero-image{
+        width:100px;
+        height:100px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="screen">
+
+
+    <!-- =================================
+         FIRST 1.PNG
+         THIS COMES CENTER FIRST
+    ================================== -->
+
+    <img
+        src="1.png"
+        class="hero-image"
+        alt=""
+    >
+
+
+
+    <!-- =================================
+         LEFT SIDE
+         first position already occupied
+         by hero 1.png
+    ================================== -->
+
+    <img
+        src="2.png"
+        class="side-image left-image pos-2 delay-2"
+        alt=""
+    >
+
+    <img
+        src="3.png"
+        class="side-image left-image pos-3 delay-3"
+        alt=""
+    >
+
+    <img
+        src="4.png"
+        class="side-image left-image pos-4 delay-4"
+        alt=""
+    >
+
+    <img
+        src="1.png"
+        class="side-image left-image pos-5 delay-5"
+        alt=""
+    >
+
+    <img
+        src="2.png"
+        class="side-image left-image pos-6 delay-6"
+        alt=""
+    >
+
+    <img
+        src="3.png"
+        class="side-image left-image pos-7 delay-7"
+        alt=""
+    >
+
+    <img
+        src="4.png"
+        class="side-image left-image pos-8 delay-8"
+        alt=""
+    >
+
+
+
+    <!-- =================================
+         RIGHT SIDE
+    ================================== -->
+
+    <img
+        src="1.png"
+        class="side-image right-image pos-1 delay-1"
+        alt=""
+    >
+
+    <img
+        src="2.png"
+        class="side-image right-image pos-2 delay-2"
+        alt=""
+    >
+
+    <img
+        src="3.png"
+        class="side-image right-image pos-3 delay-3"
+        alt=""
+    >
+
+    <img
+        src="4.png"
+        class="side-image right-image pos-4 delay-4"
+        alt=""
+    >
+
+    <img
+        src="1.png"
+        class="side-image right-image pos-5 delay-5"
+        alt=""
+    >
+
+    <img
+        src="2.png"
+        class="side-image right-image pos-6 delay-6"
+        alt=""
+    >
+
+    <img
+        src="3.png"
+        class="side-image right-image pos-7 delay-7"
+        alt=""
+    >
+
+    <img
+        src="4.png"
+        class="side-image right-image pos-8 delay-8"
+        alt=""
+    >
+
+
+</div>
+
+</body>
+</html>
